@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className="App">
-        <div>HEY</div>
+        <div>Update</div>
       {/* <BrowserRouter>
         <Routes> */}
           {/* <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
