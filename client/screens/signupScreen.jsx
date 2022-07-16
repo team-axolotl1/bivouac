@@ -27,7 +27,7 @@ const SignupScreen = () => {
 
     //Make a post request to /api/users/signup
     //body includes email, password, firstName, lastName, Location
-    let response = await axios.post('/api/users/signup', { email: email.value, password: password.value, firstName: firstName.value, lastName: lastName.value, }, { proxy:{
+    let response = await axios.post('/api/users/signup', { email: email.value, password: password.value, firstName: firstName.value, lastName: lastName.value, location: location.value}, { proxy:{
     host: 'localhost',
     port: 3000}
   })

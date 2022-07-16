@@ -5,14 +5,15 @@ const AddHikeScreen = () => {
     //get the values of the needed imputs to send to server
     const title = document.getElementById('title')
     const location = document.getElementById('location');
-    const date = document.getElementById('date')
+    const date = document.getElementById('date');
+    const notes = document.getElementById('notes');
     const difficulty = document.getElementById('difficulty');
-    const distance = document.getElementById('difficulty');
-    const crowds = document.getElementById('difficulty');
+    const distance = document.getElementById('distance');
+    const crowds = document.getElementById('crowds');
 
     //Make a post request to /api/addHike
     //body includes title, location, date, difficulty, distance, crowds
-    let response = await axios.post('/api/addHike', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.vaule, distance: distance.vaule }, { proxy:{
+    let response = await axios.post('/api/hikes', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.vaule, distance: distance.vaule, notes: notes.value }, { proxy:{
     host: 'localhost',
     port: 3000}
   })
@@ -23,10 +24,11 @@ const AddHikeScreen = () => {
 
   return (
     <div className="addHikeScreen">
-         <div className="signupScreen-container">
+        <div className="signupScreen-container">
         <h1>Add your hike</h1>
         <input className="newHikeInputs" type="text" id="title" name="title" placeholder="Jordan Williams" required />Name
         <input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required />Location
+        <textarea className="newHikeInputs" id="notes"></textarea>
         <select name="hikeType" id="hikeType">
           <option value="dayHike">Day Hike</option>
           <option value="thruHike">Thru-Hike</option>
