@@ -15,12 +15,12 @@ const LoginScreen = () => {
 
   const handleSubmit = async () => {
     //get the values of the needed imputs to send to server
-    const username = document.getElementById('loginEmail')
+    const email = document.getElementById('loginEmail')
     const password = document.getElementById('loginPassword');
 
     //Make a post request to /api/users/login
     //body includes email, password
-    let response = await axios.post('/api/login', { username: username.value, password: password.value },  { proxy:{
+    let response = await axios.post('/api/users/login', { email: email.value, password: password.value },  { proxy:{
     host: 'localhost',
     port: 3000}
   })
