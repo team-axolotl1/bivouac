@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 const HikeSchema = new mongoose.Schema({
   title: {type: String, required : true},
   difficulty : { type : Number, required : false}, 
@@ -8,7 +9,7 @@ const HikeSchema = new mongoose.Schema({
   location: {type: String, required: false},
   date: {type: String, required: false},
   notes : { type : String, required : false },
-  crowds : { type : Number, required : false }
+  crowds : { type : Number, required : false },
 });
 
 const Hike = mongoose.model('hikes', HikeSchema)

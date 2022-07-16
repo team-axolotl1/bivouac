@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 // import Home from "./src/pages/Home";
 // import Login from "./src/pages/Login";
@@ -11,6 +11,8 @@ import "./index.css";
 
 const App = () => {
 
+  const [user, setUser] = useState()
+
   return (
     <div className="App">
       <Router>
@@ -18,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path='/addhike' element={<AddHikeScreen />} />
           <Route path='/signup' element={<SignupScreen />} />  
-          <Route path='/login' element={<LoginScreen />} />            
+          <Route path='/login' element={<LoginScreen user={user} setUser={setUser} />} />            
           <Route path='/dashboard/:userId' element={<DashboardScreen />} />            
         </Routes>    
       </Router>

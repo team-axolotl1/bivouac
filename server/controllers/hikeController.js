@@ -3,7 +3,7 @@ const hikeController = {};
 
 hikeController.getAllHikes = async (req, res, next) => {
   try {
-    const result = await Hike.find({});
+    const result = await Hike.find({}); //get hikes of the current logged in user
     if (!result.length) throw 'Could not get all hikes';
 
     res.locals.hikes = result;

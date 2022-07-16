@@ -9,12 +9,13 @@ const AddHikeScreen = () => {
     const date = document.getElementById('date');
     const notes = document.getElementById('notes');
     const difficulty = document.getElementById('difficulty');
-    const distance = document.getElementById('distance');
-    const crowds = document.getElementById('crowds');
+    const distance = document.getElementById('distance'); //
+    const crowds = document.getElementById('crowds'); // 
+    const type = document.getElementById('hikeType'); // 
 
     //Make a post request to /api/addHike
     //body includes title, location, date, difficulty, distance, crowds
-    let response = await axios.post('/api/hikes', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.vaule, distance: distance.vaule, notes: notes.value }, { proxy:{
+    let response = await axios.post('/api/hikes', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.value, distance: distance.value, notes: notes.value, type: type.value }, { proxy:{
     host: 'localhost',
     port: 3000}
   })
@@ -41,7 +42,7 @@ const AddHikeScreen = () => {
         <input className="newHikeInputs" type="number" id="distance" name="distance" placeholder="10" required />
         <input type="range" min="1" max="10"  class="slider newHikeInputs" id="difficulty" /> Difficulty
         <input type="range" min="1" max="10" class="slider newHikeInputs" id="crowds" /> Crowds
-        <button className="newHikeButton" id='new-hike-submit' onClick={() => handleSubmit()} >Sign Up</button>
+        <button className="newHikeButton" id='new-hike-submit' onClick={() => handleSubmit()} >Create Hike</button>
       </div>
     </div>
   )

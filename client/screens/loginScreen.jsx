@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 
 
-const LoginScreen = () => {
+const LoginScreen = ({user, setUser}) => {
   //let navigate = useNavigate()
   const [success, setSuccess] = useState(false)
 
@@ -23,6 +23,7 @@ const LoginScreen = () => {
     let response = await axios.post('/api/users/login', { email: email.value, password: password.value },  { proxy:{
     host: 'localhost',
     port: 3000}
+
   })
   //if database post is successful, set success flag to true That will re-route to login 
     response.statusText === 'OK' && setSuccess(true)
