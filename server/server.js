@@ -6,6 +6,14 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//define the user route
+//define the hike route
+
+const userRoute = require('./routes/userRoute');
+const hikeRoute = require('./routes/hikeRoute');
+
+app.use("/api/users", userRoute)
+app.use('/api/hikes', hikeRoute)
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
@@ -14,7 +22,6 @@ if (process.env.NODE_ENV === 'production') {
     return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
   });
 };
-
 
 // app.use((req, res) => res.sendStatus(404)); // catch-all route handler for any requests to an unknown route
 app.get('*', (req, res) => {
@@ -35,10 +42,11 @@ app.get('*', (req, res) => {
   };
   
   const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
   console.log(errorObj.message);
   
-  return res.send({'Error status': errorObj.status, 'Message': errorObj.message});
-  // return res.status(errorObj.status).json(errorObj.message)
+  // return res.send({'Error status': errorObj.status, 'Message': errorObj.message});
+  return res.status(errorObj.status).json(errorObj.message)
 });
 
 
