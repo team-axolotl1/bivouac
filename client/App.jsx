@@ -1,21 +1,27 @@
 import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 // import Home from "./src/pages/Home";
 // import Login from "./src/pages/Login";
-// import Register from "./src/pages/Register";
+import SignupScreen from "./screens/signupScreen";
+import LoginScreen from "./screens/loginScreen";
+import DashboardScreen from "./screens/dashboardScreen";
+import NavBar from "./components/navBar";
+import AddHikeScreen from "./screens/AddHikeScreen";
+import "./index.css";
 
 const App = () => {
 
   return (
     <div className="App">
-        <div>Update</div>
-      {/* <BrowserRouter>
-        <Routes> */}
-          {/* <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} /> */}
-        {/* </Routes>
-      </BrowserRouter>  */}
+      <Router>
+      <NavBar />
+        <Routes>
+          <Route path='/addhike' element={<AddHikeScreen />} />
+          <Route path='/signup' element={<SignupScreen />} />  
+          <Route path='/login' element={<LoginScreen />} />            
+          <Route path='/dashboard/:userId' element={<DashboardScreen />} />            
+        </Routes>    
+      </Router>
     </div>
   );
 }

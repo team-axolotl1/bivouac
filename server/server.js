@@ -24,12 +24,19 @@ if (process.env.NODE_ENV === 'production') {
 };
 
 // app.use((req, res) => res.sendStatus(404)); // catch-all route handler for any requests to an unknown route
+
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 app.get('*', (req, res) => {
   console.log("Invalid URL detected");
   res.status(404).json({ error: `Page not found, request to ${req.path} failed` });
 });
-
-
 /**
  * configure express global error handler
  * @see https://expressjs.com/en/guide/error-handling.html#writing-error-handlers
