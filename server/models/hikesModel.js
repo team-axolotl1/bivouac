@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 
 const HikeSchema = new mongoose.Schema({
-  difficulty : { type : String, required : true }, 
-  type : { type : String, required : true },
-  distance: {type: Number, required: true},
-  location: {type: String, required: true},
-  date: {type: String, required: true},
+  title: {type: String, required : true},
+  difficulty : { type : Number, required : false}, 
+  type : { type : String, required : false },
+  distance: {type: Number, required: false},
+  location: {type: String, required: false},
+  date: {type: String, required: false},
   notes : { type : String, required : false },
-  crowds : { type : String, required : true }
+  crowds : { type : Number, required : false }
 });
 
 const Hike = mongoose.model('hikes', HikeSchema)

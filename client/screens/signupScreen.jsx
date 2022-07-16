@@ -1,20 +1,20 @@
 import React, {useState} from 'react'
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
 const SignupScreen = () => {
- // let navigate = useNavigate()
+  let navigate = useNavigate()
   //success flag for successful signup
   const [success, setSuccess] = useState(false)
 
-  // Success handler
-  // useEffect(() => {
-  //   //If success flag is set, wait 5 seconds then reroute client to '/login'
-  //   success && setTimeout(() => {
-  //     navigate(-1)
-  //   }, 5000)
-  // }, [success])
+  //Success handler
+  useEffect(() => {
+    //If success flag is set, wait 5 seconds then reroute client to '/login'
+    success && setTimeout(() => {
+      navigate(-1)
+    }, 5000)
+  }, [success])
 
   //function for clicking signup button
   const handleSubmit = async () => {

@@ -19,6 +19,11 @@ userController.createUser = async (req, res, next) => {
     const { firstName, lastName, location, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     console.log('hashed password', hashedPassword);
+    console.log('firstName', firstName);
+    console.log('last name', lastName);
+    console.log('location', location);
+    console.log('email', email);
+    console.log('password', password);
 
     User.create({ firstName, lastName, location, email, password: hashedPassword }, (err, user) => {
         if (err) return next({

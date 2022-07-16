@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 
 const AddHikeScreen = () => {
    const handleSubmit = async () => {
@@ -18,7 +19,7 @@ const AddHikeScreen = () => {
     port: 3000}
   })
     //if database post is successful, set success flag to true That will re-route to login 
-    response.statusText === 'OK' && setSuccess(true)
+    // response.statusText === 'OK' && setSuccess(true)
   }
 
 
@@ -26,7 +27,7 @@ const AddHikeScreen = () => {
     <div className="addHikeScreen">
         <div className="signupScreen-container">
         <h1>Add your hike</h1>
-        <input className="newHikeInputs" type="text" id="title" name="title" placeholder="Jordan Williams" required />Name
+        <input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required />Title
         <input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required />Location
         <textarea className="newHikeInputs" id="notes"></textarea>
         <select name="hikeType" id="hikeType">

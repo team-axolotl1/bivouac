@@ -1,4 +1,4 @@
-import React from 'react'
+
 import HikeCard from './hikeCard';
 import {Trips} from '../data.js'
 

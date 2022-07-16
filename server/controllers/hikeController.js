@@ -39,12 +39,12 @@ hikeController.getOneHike = async (req, res, next) => {
 
 
 hikeController.updateOneHike = async (req, res, next) => {
-  const { difficulty , type , distance , location , date , notes, crowds } = req.body;
+  const { title, difficulty , type , distance , location , date , notes, crowds } = req.body;
   const { id } = req.params
   console.log({id})
 
   try {
-    const newHike = await Hike.findOneAndUpdate( { _id : id }, { difficulty , type , distance , location , date , notes, crowds }).exec();
+    const newHike = await Hike.findOneAndUpdate( { _id : id }, { title, difficulty , type , distance , location , date , notes, crowds }).exec();
     if(!newHike._id) throw 'Could not find hike';
     res.locals.newHike = newHike;
     return next()
@@ -59,10 +59,11 @@ hikeController.updateOneHike = async (req, res, next) => {
 
 
 hikeController.createHike = async (req, res, next) => {
-  const { difficulty , type , distance , location , date , notes, crowds } = req.body;
+  const { title, difficulty , type , distance , location , date , notes, crowds } = req.body;
   try {
-    const result = await Hike.create({ difficulty, type , distance , location , date , notes, crowds })
+    const result = await Hike.create({ title, difficulty, type , distance , location , date , notes, crowds })
     res.locals.newHike = result;
+    console.log("hike created successfully")
     return next()
   } catch (error) {
     return next({
