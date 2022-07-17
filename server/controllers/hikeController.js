@@ -1,10 +1,11 @@
+const { Navigate } = require('react-router-dom');
 const Hike = require('../models/hikesModel.js');
 const hikeController = {};
 
-hikeController.getAllHikes = async (req, res, next) => {
+hikeController.getHikes = async (req, res, next) => {
   try {
-    const result = await Hike.find({}); //get hikes of the current logged in user
-    if (!result.length) throw 'Could not get all hikes';
+    const result = await Hike.find({userid: req.body.userid}); //get hikes of the current logged in user
+    // if (!result.length) throw 'Could not get all hikes';
 
     res.locals.hikes = result;
     return next();
@@ -59,9 +60,9 @@ hikeController.updateOneHike = async (req, res, next) => {
 
 
 hikeController.createHike = async (req, res, next) => {
-  const { title, difficulty , type , distance , location , date , notes, crowds } = req.body;
+  const { title, difficulty , type , distance , location , date , notes, crowds, userid } = req.body;
   try {
-    const result = await Hike.create({ title, difficulty, type , distance , location , date , notes, crowds })
+    const result = await Hike.create({ title, difficulty, type , distance , location , date , notes, crowds, userid })
     res.locals.newHike = result;
     console.log("hike created successfully")
     return next()

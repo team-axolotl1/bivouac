@@ -16,7 +16,7 @@ router.post('/signup', userController.createUser, (req, res) => {
 
 //login
 router.post('/login', userController.verifyUser, (req,res) => {
-  return res.status(200).send('user logged in!');
+  return res.status(200).send(res.locals.user);
 });
 
 module.exports = router;

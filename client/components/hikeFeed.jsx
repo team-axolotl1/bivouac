@@ -1,13 +1,33 @@
-
+import React, {useState} from 'react'
 import HikeCard from './hikeCard';
-import {Trips} from '../data.js'
+//import {hikes} from '../data.js'
 
-const HikeFeed = () => {
+const HikeFeed = ({hikesData}) => {
+
+  //console.log('in hike feed', {hikesData})
+
+  if (!hikesData.length) return (
+    <div>Sorry, no hikes found! </div>
+  );
+
+  // const hikeElems = hikesData.map((hike)=> {
+  //   return (
+  //     <HikeCard
+  //     info = {hike}
+  //     />
+  //   );
+  // });
+
+  // return (
+  //   <div id = "hikeCardContainer">
+  //     {hikeElems}
+  //   </div>
+  //)
   return (
     <div id="hikeCardContainer">
       {
-        Trips.map(trip => (
-          <HikeCard location={trip.location} date={trip.date} distance={trip.distance} difficulty={trip.difficulty} crowds={trip.crowds} title={trip.title} comments={trip.comments} />
+        hikesData.map(hike => (
+          <HikeCard title = {hike.title} location={hike.location} date={hike.date} distance={hike.distance} difficulty={hike.difficulty} crowds={hike.crowds} type={hike.type} notes={hike.notes} />
         ))
       }
     </div>

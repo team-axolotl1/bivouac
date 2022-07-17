@@ -51,6 +51,7 @@ userController.verifyUser = async (req, res, next) => {
           if (!result) {
             res.redirect('/signup') 
           } else {
+            res.locals.user = user;
             return next();
           }
         })

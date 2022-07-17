@@ -9,7 +9,7 @@ const hikeController = require('../controllers/hikeController');
 // create a hike
 // delete a hike
 
-router.get('/', hikeController.getAllHikes, (req, res) => {
+router.post('/get-hikes', hikeController.getHikes, (req, res) => {
   return res.status(200).json(res.locals.hikes);
 });
 

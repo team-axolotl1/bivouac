@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -8,13 +8,13 @@ const SignupScreen = () => {
   //success flag for successful signup
   const [success, setSuccess] = useState(false)
 
-  //Success handler
-  useEffect(() => {
-    //If success flag is set, wait 5 seconds then reroute client to '/login'
-    success && setTimeout(() => {
-      navigate(-1)
-    }, 5000)
-  }, [success])
+  // //Success handler
+  // useEffect(() => {
+  //   //If success flag is set, wait 5 seconds then reroute client to '/login'
+  //   success && setTimeout(() => {
+  //     navigate(-1)
+  //   }, 5000)
+  // }, [success])
 
   //function for clicking signup button
   const handleSubmit = async () => {
@@ -29,11 +29,18 @@ const SignupScreen = () => {
     //body includes email, password, firstName, lastName, Location
     let response = await axios.post('/api/users/signup', { email: email.value, password: password.value, firstName: firstName.value, lastName: lastName.value, location: location.value}, { proxy:{
     host: 'localhost',
-    port: 3000}
-  })
+    port: 3000}})
+
     //if database post is successful, set success flag to true That will re-route to login 
-    response.statusText === 'OK' && setSuccess(true)
+    //response.statusText === 'OK' && setSuccess(true)
   }
+  //to check if user is already logged in, navigate to homepage
+  
+  // useEffect(() => {
+  //   if (localStorage.getItem('user')) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   return (
     <div className="signupBackground">
@@ -54,6 +61,7 @@ const SignupScreen = () => {
         </select>
         <input className="signupInputs" type="email" id="email" name="email" placeholder="Email" required />
         <input className="signupInputs" type="password" id="password" name="password" placeholder="Password" required />
+        <Link to="/login">Already registered? Click here to login!</Link>
         <button className="signupButton" id='signup-submit' onClick={() => handleSubmit()} >Sign Up</button>
         {success && <p>Success, redirecting... login with your credentials</p>}
       </div>

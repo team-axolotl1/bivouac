@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import axios from 'axios';
+import { getHikes } from '../../server/controllers/hikeController';
+import { useNavigate } from 'react-router-dom';
 
 const AddHikeScreen = () => {
-   const handleSubmit = async () => {
+  const navigate = useNavigate()
+   
+  const handleSubmit = async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
     //get the values of the needed imputs to send to server
     const title = document.getElementById('title')
     const location = document.getElementById('location');
@@ -12,16 +17,28 @@ const AddHikeScreen = () => {
     const distance = document.getElementById('distance'); //
     const crowds = document.getElementById('crowds'); // 
     const type = document.getElementById('hikeType'); // 
-
+    //console.log('before post request')
     //Make a post request to /api/addHike
     //body includes title, location, date, difficulty, distance, crowds
-    let response = await axios.post('/api/hikes', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.value, distance: distance.value, notes: notes.value, type: type.value }, { proxy:{
-    host: 'localhost',
-    port: 3000}
-  })
+    // ( async() => {
+      let response = await axios.post('/api/hikes/', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.value, distance: distance.value, notes: notes.value, type: type.value, userid: user._id }, 
+      { proxy:{ host: 'localhost', port: 3000}})
+    // })()
+
+    //console.log('after post request')
+    getHikes();
+    //navigate('/');
     //if database post is successful, set success flag to true That will re-route to login 
     // response.statusText === 'OK' && setSuccess(true)
   }
+
+  //navigate('/');
+
+  // useEffect(() => {
+  //   if (localStorage.getItem('user')) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
 
   return (
@@ -40,9 +57,9 @@ const AddHikeScreen = () => {
         </select>
         <input className="newHikeInputs" id="date" type="date" />
         <input className="newHikeInputs" type="number" id="distance" name="distance" placeholder="10" required />
-        <input type="range" min="1" max="10"  class="slider newHikeInputs" id="difficulty" /> Difficulty
-        <input type="range" min="1" max="10" class="slider newHikeInputs" id="crowds" /> Crowds
-        <button className="newHikeButton" id='new-hike-submit' onClick={() => handleSubmit()} >Create Hike</button>
+        <input type="range" min="1" max="10"  className="slider newHikeInputs" id="difficulty" /> Difficulty
+        <input type="range" min="1" max="10" className="slider newHikeInputs" id="crowds" /> Crowds
+        <button className="newHikeButton" id='new-hike-submit' onClick={() => handleSubmit()}>Create Hike</button>
       </div>
     </div>
   )
