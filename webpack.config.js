@@ -35,7 +35,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: "[name].[ext]",
-              outputPath: "video"
+              outputPath: "assets/"
           }
           },
         ],
@@ -49,7 +49,7 @@ module.exports = {
     })
   ],
   devServer: {
-    port: 8081,
+    port: 8082,
     hot: true,
     historyApiFallback: true,
     static: {

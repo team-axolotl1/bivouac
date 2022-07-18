@@ -1,56 +1,61 @@
-import React, {useState} from 'react';
-//import {Trips} from '../data.js';
-//import Comments from "./comments.js";
-import EditHike from './editHike-test.jsx';
-//import {Modal, Button} from 'antd';
+import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import EditHikeScreen, {handleUpdate} from '../screens/editHikeScreen.jsx';
+import {TiDeleteOutline} from 'react-icons';
 
 
+const HikeCard = ({hike, deleteHikes, editHikes}) => {
 
-const HikeCard = ({title, date, type, location, distance, difficulty, crowds, notes, id, deleteHikes, editHikes}) => {
+  const navigate = useNavigate()
 
-
-  // const [isModalVisible, setIsModalVisible] = useState(false);
-
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  // };
-
-  // const handleCancel = () => {
-  //   setIsModalVisible(false);
-  // };
   
+  const [edit, setIsEdit] = useState(false);
 
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
 
   return (
-    <div className="hikeCard">
-      <p id="date">{date}</p>
-      <div className="titleBox">
-        <h2>{title}</h2>
+    <div className='hikeCard'>
+      {edit && <div><EditHikeScreen hike={hike} editHikes={editHikes} edit={edit} setIsEdit={setIsEdit} /></div>}
+      {!edit && <div >
+      <p id='date'>{hike.date}</p>
+      <div className='titleBox'>
+        <h2>{hike.title}</h2>
       </div>
-      <p id="notes">{notes}</p>
-      <div className="hikeStats">
-        <div id="locationBox">
+      <p id='notes'>{hike.notes}</p>
+      <div className='hikeStats'>
+        <div id='locationBox'>
           <p>Location</p>
-          <p id="location">{location}</p>
+          <p id='location'><b>{hike.location}</b></p>
         </div>
         <hr></hr>
-        <div id="distanceBox">
+        <div id='distanceBox'>
           <p>Distance</p>
-          <p id="distance">{distance} miles</p>
+          <p id='distance'><b>{hike.distance} miles</b></p>
         </div>
         <hr></hr>
-        <div id="diffAndCrowdsBox">
-          <p ide="difficulty">Difficulty: {difficulty}</p>
-          <p id="crowds">Crowds: {crowds}</p>
+        <div id='difficultyBox'>
+          <p>Difficulty</p>
+          <p><b>{hike.difficulty}</b></p>
+        </div>
+        <hr></hr>
+        <div id='crowdsBox'>
+          <p>Crowds</p>
+          <p><b>{hike.crowds}</b></p>
         </div>
       </div>
-        <button className="deleteHike" onClick={() => deleteHikes(id)}>Delete Hike</button>
-      </div>
-  ) 
-}
+      <button className='deleteHike' onClick={() => deleteHikes(hike._id)}>
+        Delete Hike
+      </button>
+      <button
+        className='editHike'
+        onClick={() =>
+          setIsEdit(true)
+        }
+      >
+        Edit Hike
+      </button>
+     </div>}
+    </div> 
+  )}
 
 {/* <Button onClick={showModal}>Edit</Button>
         {/* {showModal && <EditModal id={id} title={title} date={date} type={type} location={location} distance={distance} difficulty={difficulty} crowds={crowds} notes={notes}/>} */}

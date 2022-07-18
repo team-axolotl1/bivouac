@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300');
 
 * {
   box-sizing: border-box;
@@ -8,18 +8,47 @@
 }
 
 body{
-  background-color: grey;
+  /* background-color: grey; */
+  /* background-image: url('../assets/lake.jpg'); */
   margin:0;
   padding: 0;
   box-sizing: border-box;
+  color: rgb(62, 64, 66);
+  background-color: rgb(166, 166, 166);
+  background-image: url('../assets/lake.jpg');
 }
 
-h1, h2, h3, h4, h5 {font-family: 'Bree Serif',
-serif;
+h1, h2, h3, h4, h5 {font-family: 'Alegreya', serif;
 font-size: 43px;} 
     
 #logo {
   font-family: 'Alegreya', serif;
+}
+
+/* .video{
+  z-index: -100;
+} */
+
+.profile{
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.451);
+  box-shadow: rgb(62, 64, 66) 0px 11px 17px -12px;
+  margin: 50px;
+  padding: 30px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+  padding-right: 20px;
+}
+
+#profilePic {
+  background-color: grey;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
 
@@ -90,6 +119,7 @@ select {
 }
 .signupScreen-container{
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -137,7 +167,7 @@ select {
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .hikeStats {
@@ -152,13 +182,14 @@ select {
   padding-left: none;
 }
 
-#locationBox, #distanceBox, #diffAndCrowdsBox, #comments{
+#locationBox, #distanceBox, #difficultyBox, #crowdsBox{
   align-content: flex-start;
   padding: 10px;
 }
 
-.signupButton{
-  padding: 5px;
+.signupButton, .deleteHike, .editHike, .logout {
+  padding: 7px;
+  font-size: 1rem;
   margin: 10px;
   color: rgb(86, 86, 86);
   background-color:rgba(255, 255, 255, 0.451);
@@ -166,17 +197,15 @@ select {
   border: rgba(232, 232, 232, 0.057);
 }
 
-.signupButton:hover {
+.signupButton:hover, .loginButton:hover, .deleteHike:hover, .editHike:hover {
   background-color:rgba(255, 255, 255, 0.594);
+  color: rgb(255, 255, 255);
 }
 
 .loginButton{
-  padding: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
   color: white;
-}
-
-.loginButton:hover {
-  color: rgb(255, 255, 255);
 }
 
 .signupInputs, .newHikeInputs, .loginInputs {
@@ -188,9 +217,46 @@ select {
   background-color: rgba(255, 255, 255, 0.511);
 }
 
-#editModal {
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 50vw;
+.google-button {
+  height: 40px;
+  border-width: 0;
+  background: white;
+  color: #737373;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0;
+  transform: scale(1.4);
+}
+.google-button:hover, .google-button:focus{
+  box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.2);
+  outline: none;
+transform: scale(1.4) skewX(-0.4deg);
+}
+.google-button:active{
+  outline: none;
+  box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.3);
+  transition-duration: 10ms;
+}
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px 0 8px 8px;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+}
+.google-button__icon--plus {
+  width: 27px;
+}
+.google-button__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Roboto',arial,sans-serif;
 }

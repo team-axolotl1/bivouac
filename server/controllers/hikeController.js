@@ -1,4 +1,4 @@
-const { Navigate } = require('react-router-dom');
+const { Navigate } = require('react-router-dom' );
 const Hike = require('../models/hikesModel.js');
 const hikeController = {};
 
@@ -48,7 +48,9 @@ hikeController.updateOneHike = async (req, res, next) => {
     const newHike = await Hike.findOneAndUpdate( { _id : id }, { title, difficulty , type , distance , location , date , notes, crowds }).exec();
     if(!newHike._id) throw 'Could not find hike';
     res.locals.newHike = newHike;
+    console.log('before calling next')
     return next()
+    console.log('after calling next')
   } catch (error) {
     return next({
       log: 'Error in hikeController.updateOneHike middleware: ' + error,
@@ -65,7 +67,7 @@ hikeController.createHike = async (req, res, next) => {
     const result = await Hike.create({ title, difficulty, type , distance , location , date , notes, crowds, userid })
     res.locals.newHike = result;
     console.log("hike created successfully")
-    //return next()
+    return next()
   } catch (error) {
     return next({
       log: 'Could not post the hike in Hike.createHike' + error,
@@ -73,6 +75,7 @@ hikeController.createHike = async (req, res, next) => {
       message: { err: 'error in creating hike' }
     });
   };
+  //return next();
 };
 
 

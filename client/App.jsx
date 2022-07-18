@@ -4,7 +4,8 @@ import SignupScreen from "./screens/signupScreen";
 import LoginScreen from "./screens/loginScreen";
 import DashboardScreen from "./screens/dashboardScreen";
 import NavBar from "./components/navBar";
-import AddHikeScreen from "./screens/AddHikeScreen";
+import AddHikeScreen from "./screens/addHikeScreen";
+// import EditHikeScreen from "./screens/editHikeScreen";
 import "./index.css";
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
         <Routes>
           <Route path='/addhike' element={<ProtectedRoute><AddHikeScreen /></ProtectedRoute>} />
           <Route path='/signup' element={<SignupScreen />} />  
-          <Route path='/login' element={<LoginScreen/>} />            
+          <Route path='/login' element={<LoginScreen/>} />   
+          {/* <Route path='/edithike' element={<EditHikeScreen/>} />              */}
           <Route path='/' element={<ProtectedRoute><DashboardScreen/></ProtectedRoute>} />            
         </Routes>    
       </Router>

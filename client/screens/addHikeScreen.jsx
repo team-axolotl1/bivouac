@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AddHikeScreen = () => {
   const navigate = useNavigate()
+  let response = false;
    
   const handleSubmit = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -18,36 +19,33 @@ const AddHikeScreen = () => {
     const crowds = document.getElementById('crowds'); // 
     const type = document.getElementById('hikeType'); // 
     //console.log('before post request')
+
     //Make a post request to /api/addHike
-    //body includes title, location, date, difficulty, distance, crowds
-    // ( async() => {
     let response = await axios.post('/api/hikes/', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.value, distance: distance.value, notes: notes.value, type: type.value, userid: user._id }, 
     { proxy:{ host: 'localhost', port: 3000}})
-    // })()
 
-    //console.log('after post request')
     getHikes();
-    //navigate('/');
-    //if database post is successful, set success flag to true That will re-route to login 
-    // response.statusText === 'OK' && setSuccess(true)
+
+    response = true;
+    
+    navigate('/');
   }
 
-  //navigate('/');
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('user')) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem('user') && response) {
+      navigate("/");
+    }
+  }, [response]);
 
 
   return (
     <div className="addHikeScreen">
         <div className="signupScreen-container">
         <h1>Add your hike</h1>
-        <input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required />Title
-        <input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required />Location
-        <textarea className="newHikeInputs" id="notes"></textarea>
+        Title:<input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required />
+        Location:<input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required />
+        Notes:<textarea className="newHikeInputs" id="notes"></textarea>
         <select name="hikeType" id="hikeType">
           <option value="dayHike">Day Hike</option>
           <option value="thruHike">Thru-Hike</option>

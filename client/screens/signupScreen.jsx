@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import GoogleOauth from '../components/Authenticate';
 
 
 const SignupScreen = () => {
@@ -63,6 +64,7 @@ const SignupScreen = () => {
         <input className="signupInputs" type="password" id="password" name="password" placeholder="Password" required />
         <Link to="/login">Already registered? Click here to login!</Link>
         <button className="signupButton" id='signup-submit' onClick={() => {handleSubmit(); navigate('/')}}>Sign Up</button>
+        <GoogleOauth />
         {success && <p>Success, redirecting... login with your credentials</p>}
       </div>
     </div>

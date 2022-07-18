@@ -1,17 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
-
+import GoogleOauth from '../components/Authenticate';
+import VideoPlayer from "react-background-video-player";
 
 const LoginScreen = ({user, setUser}) => {
+  
   const navigate = useNavigate()
   const [success, setSuccess] = useState(false)
-
-  // useEffect(() => {
-  //   success && setTimeout(() => {
-  //     navigate(-1)
-  //   }, 8000)
-  // }, [success])
 
   const handleSubmit = async () => {
     //get the values of the needed imputs to send to server
@@ -42,15 +38,22 @@ const LoginScreen = ({user, setUser}) => {
     }
   }, []);
 
-  //if database post is successful, set success flag to true That will re-route to login 
-  // response.statusText === 'OK' && setSuccess(true)
   return (
     <div className="signupScreen-container">
+      {/* <VideoPlayer
+        className="video"
+        src={
+          "https://player.vimeo.com/external/435674703.sd.mp4?s=01ad1ba21dc72c1d34728e1b77983805b34daad7&profile_id=165&oauth2_token_id=57447761"
+        }
+        autoPlay={true}
+        muted={true}
+      /> */}
       <h1>Login</h1>
       <input className="loginInputs" type="email" id="loginEmail" name="email" placeholder="Email"/>
-      <input className="loginInputs" type="password" id="loginPassword" name="password" placeholder="Password"   />
+      <input className="loginInputs" type="password" id="loginPassword" name="password" placeholder="Password"  />
       <Link to="/signup">Not registered yet? Click here to register!</Link>
       <button className="signupButton" id='signup-submit'onClick={() => handleSubmit()} >Login</button>
+      <GoogleOauth />
       {success && <p>Success, redirecting... login with your credentials</p>}
     </div>
     

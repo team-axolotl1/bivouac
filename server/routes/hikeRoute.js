@@ -18,7 +18,7 @@ router.get('/:id', hikeController.getOneHike, (req, res) => {
 });
 
 router.put('/:id', hikeController.updateOneHike, (req , res) => {
-  return res.status(200).json(res.locals.newHike)
+  return res.status(200).send('redirect complete');
 });
 
 router.post('/', hikeController.createHike, (req, res) => {
