@@ -79,7 +79,7 @@ hikeController.createHike = async (req, res, next) => {
 hikeController.deleteOneHike = async (req, res, next) => {
   const { id } = req.params;
   
-  try{
+  try {
     let deletedHike = await Hike.findOneAndDelete({_id: id})
     res.locals.deletedHike = deletedHike
     return next()

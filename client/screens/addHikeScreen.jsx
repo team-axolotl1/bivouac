@@ -21,8 +21,8 @@ const AddHikeScreen = () => {
     //Make a post request to /api/addHike
     //body includes title, location, date, difficulty, distance, crowds
     // ( async() => {
-      let response = await axios.post('/api/hikes/', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.value, distance: distance.value, notes: notes.value, type: type.value, userid: user._id }, 
-      { proxy:{ host: 'localhost', port: 3000}})
+    let response = await axios.post('/api/hikes/', { title: title.value, location: location.value, date: date.value, difficulty: difficulty.value,  crowds: crowds.value, distance: distance.value, notes: notes.value, type: type.value, userid: user._id }, 
+    { proxy:{ host: 'localhost', port: 3000}})
     // })()
 
     //console.log('after post request')

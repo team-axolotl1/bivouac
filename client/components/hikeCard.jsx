@@ -26,18 +26,33 @@ const HikeCard = ({title, date, type, location, distance, difficulty, crowds, no
 
   return (
     <div className="hikeCard">
-      <h1>{title}</h1>
+      <p id="date">{date}</p>
+      <div className="titleBox">
+        <h2>{title}</h2>
+      </div>
+      <p id="notes">{notes}</p>
       <div className="hikeStats">
-        <p id="title">Title: {title}</p>
-        <p id="date">Date: {date}</p>
-        <p id="type">Type: {type}</p>
-        <p id="location">Location: {location}</p>
-        <p id="distance">Distance: {distance} miles</p>
-        <p id="difficulty">Difficulty: {difficulty}</p>
-        <p id="crowds">Crowds: {crowds}</p>
-        <p id="notes">Notes: {notes}</p>
+        <div id="locationBox">
+          <p>Location</p>
+          <p id="location">{location}</p>
+        </div>
+        <hr></hr>
+        <div id="distanceBox">
+          <p>Distance</p>
+          <p id="distance">{distance} miles</p>
+        </div>
+        <hr></hr>
+        <div id="diffAndCrowdsBox">
+          <p ide="difficulty">Difficulty: {difficulty}</p>
+          <p id="crowds">Crowds: {crowds}</p>
+        </div>
+      </div>
         <button className="deleteHike" onClick={() => deleteHikes(id)}>Delete Hike</button>
-        {/* <Button onClick={showModal}>Edit</Button>
+      </div>
+  ) 
+}
+
+{/* <Button onClick={showModal}>Edit</Button>
         {/* {showModal && <EditModal id={id} title={title} date={date} type={type} location={location} distance={distance} difficulty={difficulty} crowds={crowds} notes={notes}/>} */}
 
       {/* <Modal title="Edit Hike" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} id="editModal" >
@@ -61,13 +76,9 @@ const HikeCard = ({title, date, type, location, distance, difficulty, crowds, no
           </div>
         </div>
       </Modal> */}
-      </div>
-      {/* <div className="comment-and-like">
+       {/* <div className="comment-and-like">
         <input type="text" className="comment"/>
         <button className="likeButton"></button> */}
       {/* </div> */}
-    </div>
-  ) 
-}
 
 export default HikeCard
