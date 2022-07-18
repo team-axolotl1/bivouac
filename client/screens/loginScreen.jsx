@@ -51,6 +51,7 @@ const LoginScreen = ({user, setUser}) => {
       <h1>Login</h1>
       <input className="loginInputs" type="email" id="loginEmail" name="email" placeholder="Email"/>
       <input className="loginInputs" type="password" id="loginPassword" name="password" placeholder="Password"  />
+      <br></br>
       <Link to="/signup">Not registered yet? Click here to register!</Link>
       <button className="signupButton" id='signup-submit'onClick={() => handleSubmit()} >Login</button>
       <GoogleOauth />

@@ -14,17 +14,19 @@ const HikeCard = ({hike, deleteHikes, editHikes}) => {
 
   return (
     <div className='hikeCard'>
-      {edit && <div><EditHikeScreen hike={hike} editHikes={editHikes} edit={edit} setIsEdit={setIsEdit} /></div>}
+      {edit && <EditHikeScreen hike={hike} editHikes={editHikes} edit={edit} setIsEdit={setIsEdit} />}
       {!edit && <div >
       <p id='date'>{hike.date}</p>
       <div className='titleBox'>
         <h2>{hike.title}</h2>
       </div>
+      <br></br>
       <p id='notes'>{hike.notes}</p>
+      <br></br>
       <div className='hikeStats'>
         <div id='locationBox'>
           <p>Location</p>
-          <p id='location'><b>{hike.location}</b></p>
+          <p id='hikeLocation'><b>{hike.location}</b></p>
         </div>
         <hr></hr>
         <div id='distanceBox'>

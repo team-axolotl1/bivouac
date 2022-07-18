@@ -97,6 +97,11 @@ font-size: 43px;}
   color: rgb(86, 86, 86);
 }
 
+#hikeType {
+  width: 175px;
+  padding: 5px;
+}
+
 #logo {
   font-weight: 900;
   margin-left: 2rem;
@@ -113,9 +118,9 @@ font-size: 43px;}
   }
 } */
 
-select {
+#location {
   padding: 5px;
-  width: 50%;
+  width: 175px;
 }
 .signupScreen-container{
   display: flex;
@@ -183,11 +188,11 @@ select {
 }
 
 #locationBox, #distanceBox, #difficultyBox, #crowdsBox{
-  align-content: flex-start;
-  padding: 10px;
+  align-content: center;
+  padding: 15px;
 }
 
-.signupButton, .deleteHike, .editHike, .logout {
+.signupButton, .deleteHike, .editHike, .logout, .editHike, #updateButton, #new-hike-submit {
   padding: 7px;
   font-size: 1rem;
   margin: 10px;
@@ -195,11 +200,15 @@ select {
   background-color:rgba(255, 255, 255, 0.451);
   border-radius: 3px;
   border: rgba(232, 232, 232, 0.057);
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
 }
 
 .signupButton:hover, .loginButton:hover, .deleteHike:hover, .editHike:hover {
   background-color:rgba(255, 255, 255, 0.594);
-  color: rgb(255, 255, 255);
+  color: rgb(86, 86, 86);
 }
 
 .loginButton{
@@ -213,11 +222,8 @@ select {
   padding: 5px;
 } 
 
-.signupScreen-container:hover{
-  background-color: rgba(255, 255, 255, 0.511);
-}
-
 .google-button {
+  margin-top: 10px;
   height: 40px;
   border-width: 0;
   background: white;

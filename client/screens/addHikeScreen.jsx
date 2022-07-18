@@ -46,17 +46,17 @@ const AddHikeScreen = () => {
         Title:<input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required />
         Location:<input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required />
         Notes:<textarea className="newHikeInputs" id="notes"></textarea>
-        <select name="hikeType" id="hikeType">
+        Type <select name="hikeType" id="hikeType">
           <option value="dayHike">Day Hike</option>
           <option value="thruHike">Thru-Hike</option>
           <option value="sectionHike">Section Hike</option>
           <option value="summitHike">Summit Hike</option>
           <option value="sectionHike">Section Hike</option>
         </select>
-        <input className="newHikeInputs" id="date" type="date" />
-        <input className="newHikeInputs" type="number" id="distance" name="distance" placeholder="10" required />
-        <input type="range" min="1" max="10"  className="slider newHikeInputs" id="difficulty" /> Difficulty
-        <input type="range" min="1" max="10" className="slider newHikeInputs" id="crowds" /> Crowds
+        Date <input className="newHikeInputs" id="date" type="date" />
+        Distance <input className="newHikeInputs" type="number" id="distance" name="distance" placeholder="10" required />
+        Difficulty <input type="range" min="1" max="10"  className="slider newHikeInputs" id="difficulty" />
+        Crowds <input type="range" min="1" max="10" className="slider newHikeInputs" id="crowds" /> 
         <button className="newHikeButton" id='new-hike-submit' onClick={() => handleSubmit()}>Create Hike</button>
       </div>
     </div>

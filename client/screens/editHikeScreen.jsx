@@ -28,34 +28,28 @@ const EditHikeScreen = ({ hike, edit, setIsEdit }) => {
     window.location.reload();
   }
 
-  //navigate('/');
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('user')) {
-  //     navigate("/");
-  //   }
-  // }, []);
+ 
 
 
   return (
     <div className="addHikeScreen">
         <div className="signupScreen-container">
         <h1>Edit your hike</h1>
-        <input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required defaultValue={hike.title}/>Title
-        <input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required defaultValue={hike.location}/>Location
-        <textarea className="newHikeInputs" id="notes" defaultValue={hike.notes}></textarea>
-        <select name="hikeType" id="hikeType">
+        Title<input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required defaultValue={hike.title}/>
+        Location<input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required defaultValue={hike.location}/>
+        Notes<textarea className="newHikeInputs" id="notes" defaultValue={hike.notes}></textarea>
+        Type<select name="hikeType" id="hikeType">
           <option value="dayHike">Day Hike</option>
           <option value="thruHike">Thru-Hike</option>
           <option value="sectionHike">Section Hike</option>
           <option value="summitHike">Summit Hike</option>
           <option value="sectionHike">Section Hike</option>
         </select>
-        <input className="newHikeInputs" id="date" type="date" defaultValue={hike.date}/>
-        <input className="newHikeInputs" type="number" id="distance" name="distance" placeholder="10" required defaultValue={hike.distance}/>
-        <input type="range" min="1" max="10"  className="slider newHikeInputs" id="difficulty" defaultValue={hike.distance}/> Difficulty
-        <input type="range" min="1" max="10" className="slider newHikeInputs" id="crowds" defaultValue={hike.crowds}/> Crowds
-        <button className="newHikeButton" id='new-hike-submit' onClick={() => handleUpdate()}>Update Hike</button>
+        Date<input className="newHikeInputs" id="date" type="date" defaultValue={hike.date}/>
+        Distance<input className="newHikeInputs" type="number" id="distance" name="distance" placeholder="10" required defaultValue={hike.distance}/>
+        Difficulty<input type="range" min="1" max="10"  className="slider newHikeInputs" id="difficulty" defaultValue={hike.distance}/> 
+        Crowds<input type="range" min="1" max="10" className="slider newHikeInputs" id="crowds" defaultValue={hike.crowds}/> 
+        <button id="updateButton" onClick={() => handleUpdate()}>Update Hike</button>
       </div>
     </div>
   )
