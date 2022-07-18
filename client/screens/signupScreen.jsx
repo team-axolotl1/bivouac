@@ -36,11 +36,11 @@ const SignupScreen = () => {
   }
   //to check if user is already logged in, navigate to homepage
   
-  // useEffect(() => {
-  //   if (localStorage.getItem('user')) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="signupBackground">
@@ -62,7 +62,7 @@ const SignupScreen = () => {
         <input className="signupInputs" type="email" id="email" name="email" placeholder="Email" required />
         <input className="signupInputs" type="password" id="password" name="password" placeholder="Password" required />
         <Link to="/login">Already registered? Click here to login!</Link>
-        <button className="signupButton" id='signup-submit' onClick={() => handleSubmit()} >Sign Up</button>
+        <button className="signupButton" id='signup-submit' onClick={() => {handleSubmit(); navigate('/')}}>Sign Up</button>
         {success && <p>Success, redirecting... login with your credentials</p>}
       </div>
     </div>

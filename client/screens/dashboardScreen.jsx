@@ -40,11 +40,15 @@ const deleteHikes = async (hikeID) => {
   }
 }
 
-const editHikes = async (hikeID) => {
+const editHikes = async (values) => {
+  console.log('hikeID in editHikes', hikeID)
   try {
-    await axios.put(`api/hikes/${hikeID}`, 
-    
-    );
+    await axios.put(`api/hikes/${hikeID}`, {
+      payload : {
+        ...values,
+        userid: user._id
+      }
+    });
     getHikes();
   }
   catch (error) {
