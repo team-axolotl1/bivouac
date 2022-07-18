@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import HikeCard from './hikeCard';
 //import {hikes} from '../data.js'
 
-const HikeFeed = ({hikesData}) => {
+const HikeFeed = ({hikesData, deleteHikes, editHikes}) => {
 
   //console.log('in hike feed', {hikesData})
 
@@ -23,11 +23,12 @@ const HikeFeed = ({hikesData}) => {
   //     {hikeElems}
   //   </div>
   //)
+  console.log('deleteHikes in HikeFeed: ', deleteHikes)
   return (
     <div id="hikeCardContainer">
       {
         hikesData.map(hike => (
-          <HikeCard title = {hike.title} location={hike.location} date={hike.date} distance={hike.distance} difficulty={hike.difficulty} crowds={hike.crowds} type={hike.type} notes={hike.notes} />
+          <HikeCard deleteHikes={deleteHikes} id={hike._id} title = {hike.title} location={hike.location} date={hike.date} distance={hike.distance} difficulty={hike.difficulty} crowds={hike.crowds} type={hike.type} notes={hike.notes} />
         ))
       }
     </div>

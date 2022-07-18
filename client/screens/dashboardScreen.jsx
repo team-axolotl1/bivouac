@@ -30,13 +30,20 @@ const DashboardScreen = () => {
     }
   }
 
-const deleteHikes = async (record) => {
+const deleteHikes = async (hikeID) => {
   try {
-    await axios.post(
-      "api/hikes/:id",
-      {
-        hikeId: record._id,
-      }
+    await axios.delete(`api/hikes/${hikeID}`);
+    getHikes();
+  }
+  catch (error) {
+    console.log('error in deletehikes function')
+  }
+}
+
+const editHikes = async (hikeID) => {
+  try {
+    await axios.put(`api/hikes/${hikeID}`, 
+    
     );
     getHikes();
   }
@@ -53,7 +60,7 @@ useEffect(() => {
 
   return (
     <div className="hikeFeed">
-        <HikeFeed hikesData = {hikesData} />
+        <HikeFeed hikesData = {hikesData} deleteHikes = {deleteHikes} editHikes = {editHikes}/>
     </div>
   )
 }

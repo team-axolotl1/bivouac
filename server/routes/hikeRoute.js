@@ -14,20 +14,20 @@ router.post('/get-hikes', hikeController.getHikes, (req, res) => {
 });
 
 router.get('/:id', hikeController.getOneHike, (req, res) => {
-    return res.status(200).json(res.locals.hike);
+  return res.status(200).json(res.locals.hike);
 });
 
 router.put('/:id', hikeController.updateOneHike, (req , res) => {
-    return res.status(200).json(res.locals.newHike)
+  return res.status(200).json(res.locals.newHike)
 });
 
 router.post('/', hikeController.createHike, (req, res) => {
   return res.status(200).json(res.locals.newHike);
-})
+});
 
 router.delete('/:id', hikeController.deleteOneHike,(req, res) => {
   return res.status(200).json(res.locals.deletedHike);
-})
+});
 
 
 module.exports = router;

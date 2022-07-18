@@ -65,7 +65,7 @@ hikeController.createHike = async (req, res, next) => {
     const result = await Hike.create({ title, difficulty, type , distance , location , date , notes, crowds, userid })
     res.locals.newHike = result;
     console.log("hike created successfully")
-    return next()
+    //return next()
   } catch (error) {
     return next({
       log: 'Could not post the hike in Hike.createHike' + error,
