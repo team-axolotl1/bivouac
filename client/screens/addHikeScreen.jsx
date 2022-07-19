@@ -48,7 +48,7 @@ const AddHikeScreen = () => {
         <input className="newHikeInputs" type="text" id="title" name="title" placeholder="Title" required />Title
         <input className="newHikeInputs" type="text" id="location" name="location" placeholder="Zion National Park" required />Location
         <textarea className="newHikeInputs" id="notes"></textarea>
-        <select name="hikeType" id="hikeType">
+        <select className="hikeType" id="hikeType">
           <option value="dayHike">Day Hike</option>
           <option value="thruHike">Thru-Hike</option>
           <option value="sectionHike">Section Hike</option>

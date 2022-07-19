@@ -16,10 +16,10 @@ const App = () => {
       <Router>
       <NavBar />
         <Routes>
-          <Route path='/addhike' element={<ProtectedRoute><AddHikeScreen /></ProtectedRoute>} />
+          <ProtectedRoute><Route path='/addhike' element={<AddHikeScreen />} /></ProtectedRoute>
           <Route path='/signup' element={<SignupScreen />} />  
           <Route path='/login' element={<LoginScreen/>} />            
-          <Route path='/' element={<ProtectedRoute><DashboardScreen/></ProtectedRoute>} />            
+          <Route path='/' element={<DashboardScreen/>} />            
         </Routes>    
       </Router>
     </div>

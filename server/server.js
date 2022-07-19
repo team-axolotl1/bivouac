@@ -3,14 +3,60 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-//define the user route
-//define the hike route
-
 const userRoute = require('./routes/userRoute');
 const hikeRoute = require('./routes/hikeRoute');
+
+const session = require("express-session");
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const findOrCreate = require("mongoose-findorcreate");
+const cookieSession = require('cookie-session');
+
+// initializes session and passport
+// app.use(session({
+//   secret: "Our little secret.",
+//   resave: false,
+//   saveUninitialized: false
+// }));
+app.use(cookieSession({
+  name: 'google-auth-session',
+  keys: ['key1', 'key2']
+}))
+
+const isLoggedIn = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+}
+
+app.get("/logout", (req, res) => {
+  req.session = null;
+  req.logout();
+  res.redirect('/');
+})
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get("/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email", 'https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/userinfo.email'] })
+);
+app.get("/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/signup" }),
+  function(req, res) {
+    // Successful authentication, redirect secrets.
+    res.redirect("/");
+  }
+);
+app.get("/logout", function(req, res){
+  res.redirect("/login");
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", userRoute)
 app.use('/api/hikes', hikeRoute)
@@ -23,9 +69,10 @@ if (process.env.NODE_ENV === 'production') {
   });
 };
 
+GoogleStrategy.prototype.userProfile = function(token, done) {
+  done(null, {})
+}
 // app.use((req, res) => res.sendStatus(404)); // catch-all route handler for any requests to an unknown route
-
-
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'), function(err) {
     if (err) {

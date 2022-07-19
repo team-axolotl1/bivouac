@@ -24,8 +24,15 @@ userController.createUser = async (req, res, next) => {
     // console.log('location', location);
     // console.log('email', email);
     // console.log('password', password);
-    var newUserID;
+    // const user = User.findOne({email : email});
+    // if (user.email) {
+    //   console.log(user.email)
+    //   console.log(('email already exists in database, try logging in'))
+    //   throw 'this email already exists'
+    // }
 
+
+    var newUserID;
     User.create({ firstName, lastName, location, email, password: hashedPassword }, (err, user) => {
         if (err) return next({
         log: 'Error creating user at userController.createUser',
